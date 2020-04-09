@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ecd80b2f-8bba-4c56-8e9c-9bf74fb103a8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/SavingsAccount.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1aJyFHh6SfUIEB4C8Sab1Sez4Ez" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ecd80b2f-8bba-4c56-8e9c-9bf74fb103a8" name="Default Changelist" comment="" />
+      <created>1586467886080</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586467886080</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="875" y="190" key="#com.intellij.ide.util.MemberChooser" timestamp="1586472001429">
+      <screen x="0" y="23" width="1680" height="943" />
+    </state>
+    <state x="875" y="190" key="#com.intellij.ide.util.MemberChooser/0.23.1680.943/-1366.66.1366.745@0.23.1680.943" timestamp="1586472001429" />
+    <state x="517" y="327" key="com.intellij.ide.util.TipDialog" timestamp="1586467907962">
+      <screen x="0" y="23" width="1680" height="943" />
+    </state>
+    <state x="517" y="327" key="com.intellij.ide.util.TipDialog/0.23.1680.943/-1366.66.1366.745@0.23.1680.943" timestamp="1586467907962" />
+    <state x="578" y="268" key="extract.method.dialog" timestamp="1586468127339">
+      <screen x="0" y="23" width="1680" height="943" />
+    </state>
+    <state x="578" y="268" key="extract.method.dialog/0.23.1680.943/-1366.66.1366.745@0.23.1680.943" timestamp="1586468127339" />
+    <state x="602" y="108" key="refactoring.ChangeSignatureDialog" timestamp="1586472750387">
+      <screen x="0" y="23" width="1680" height="943" />
+    </state>
+    <state x="602" y="108" key="refactoring.ChangeSignatureDialog/0.23.1680.943/-1366.66.1366.745@0.23.1680.943" timestamp="1586472750387" />
+  </component>
+</project>
