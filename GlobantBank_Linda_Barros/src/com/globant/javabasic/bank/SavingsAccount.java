@@ -6,14 +6,12 @@ public class SavingsAccount {
     private int accountNumber;
     private Date openingDate;
     private double balance;
-    private int clientID;
 
 
     public SavingsAccount(int accountNumber, Date openingDate, double balance, int clientID) {
         this.accountNumber = accountNumber;
         this.openingDate = openingDate;
         this.balance = balance;
-        this.clientID = clientID;
     }
 
     public int getAccountNumber() {
@@ -36,11 +34,16 @@ public class SavingsAccount {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setBalance(double amount) {
+        this.balance += amount;
     }
 
-    public int getClientID() {
-        return clientID;
+    public boolean withdraw(double amount){
+        if(amount >= this.balance){
+            return false;
+        }else{
+            this.balance -= amount;
+        }
+        return true;
     }
 }

@@ -1,7 +1,6 @@
 package com.globant.javabasic.bank;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Bank {
@@ -10,26 +9,49 @@ public class Bank {
     private int taxWithdrawLess1000;
     private int taxWithdrawMore1000;
     private int taxPlusPercentage;
+    private int taxTransfer;
     private List<Client> clientList = new ArrayList<>();
 
-
-    public Bank(int taxWithdrawLess1000, int taxWithdrawMore1000, int taxPlusPercentage) {
+    public Bank(int taxWithdrawLess1000, int taxWithdrawMore1000, int taxPlusPercentage, int taxTransfer) {
         this.taxWithdrawLess1000 = taxWithdrawLess1000;
         this.taxWithdrawMore1000 = taxWithdrawMore1000;
         this.taxPlusPercentage = taxPlusPercentage;
+        this.taxTransfer = taxTransfer;
         createClients();
     }
 
-    public double addMoney() {
-        return 0.0;
+    public double addMoney(Client client, double amount) {
+        SavingsAccount account = client.getSavingsAccount();
+        account.setBalance(amount);
+        return account.getBalance();
     }
 
-    public boolean withdrawMoney() {
-        return true;
+    public boolean withdrawMoney(Client client, double amount) {
+        SavingsAccount account = client.getSavingsAccount();
+        amount = applyTax(amount);
+        return account.withdraw(amount);
     }
 
-    public boolean transferMoney() {
-        return true;
+    public String transferMoneyToAccount(Client clientFrom, double amount, int accountNumber) {
+        String result = "";
+        Client clientTo = existAccount(accountNumber);
+
+        if (clientTo.getClientID() > 0) {
+            SavingsAccount accountFrom = clientFrom.getSavingsAccount();
+            boolean resFromAccount = accountFrom.withdraw(amount + taxTransfer);
+
+            if (resFromAccount == false) {
+                result = "Origin account doesn't have enough money in its balance to transfer " + amount + " + " + taxTransfer + "$";
+            } else {
+                updateClient(clientFrom);
+                clientTo.getSavingsAccount().setBalance(amount);
+                updateClient(clientTo);
+            }
+        } else {
+            result = "Account number: " + accountNumber + "doesn't exist";
+        }
+
+        return result;
     }
 
     public List<Client> getClients() {
@@ -44,7 +66,7 @@ public class Bank {
 
             if (client.getClientID() == clientID) {
                 client.addSavingsAccount(accountNumber, balance);
-                clientList.set(i,client);
+                clientList.set(i, client);
 
                 i = clientList.size();
                 answer = "Account successfully added to the user ID: " + clientID + " and name: " + client.getUserName();
@@ -61,10 +83,53 @@ public class Bank {
     private void createClients() {
         int n = 10;
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             Client client = new Client(i, "Client" + i, "123456");
             clientList.add(client);
         }
     }
 
+    private double applyTax(double amount) {
+        if (amount <= 1000) {
+            return amount + taxWithdrawLess1000;
+        } else {
+            double percentage = (amount * taxPlusPercentage) / 100;
+            return amount + taxWithdrawMore1000 + percentage;
+        }
+    }
+
+    private String updateClient(Client clientToBeUpdate) {
+        int i = 0;
+        String answer = "Client doesn't exist";
+        while (i < clientList.size()) {
+            Client client = clientList.get(i);
+
+            if (client.getClientID() == clientToBeUpdate.getClientID()) {
+                clientList.set(i, client);
+                i = clientList.size();
+                answer = "";
+            } else {
+                i++;
+            }
+        }
+
+        return answer;
+    }
+
+    private Client existAccount(int accountNumber) {
+        Client result = new Client(-1, "", "");
+        int i = 0;
+        while (i < clientList.size()) {
+            Client client = clientList.get(i);
+            SavingsAccount account = client.getSavingsAccount();
+
+            if (account.getAccountNumber() == accountNumber) {
+                result = client;
+                i = clientList.size();
+            } else {
+                i++;
+            }
+        }
+        return result;
+    }
 }
