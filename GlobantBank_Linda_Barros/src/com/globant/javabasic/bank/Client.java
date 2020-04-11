@@ -8,10 +8,11 @@ public class Client {
     private String password;
     private SavingsAccount savingsAccount;
 
-    public Client(int clientID, String userName, String password) {
+    public Client(int clientID, String userName, String password, int accountNumber, double balance) {
         this.clientID = clientID;
         this.userName = userName;
         this.password = password;
+        addSavingsAccount(accountNumber, balance);
     }
 
     public boolean addSavingsAccount(int accountNumber, double balance) {

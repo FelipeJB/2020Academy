@@ -4,7 +4,7 @@
     <list default="true" id="ecd80b2f-8bba-4c56-8e9c-9bf74fb103a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/globant/javabasic/bank/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
