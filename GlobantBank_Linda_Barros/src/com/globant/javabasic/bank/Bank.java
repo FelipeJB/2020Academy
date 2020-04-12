@@ -43,17 +43,20 @@ public class Bank {
     public String transferMoneyToAccount(Client clientFrom, double amount, Client clientTo) {
         String result = "";
 
-        SavingsAccount accountFrom = clientFrom.getSavingsAccount();
-        boolean resFromAccount = accountFrom.withdraw(amount + taxTransfer);
+        if(clientFrom.getClientID() == clientTo.getClientID()){
+            result ="You can't transfer to your own account";
+        }else {
+            SavingsAccount accountFrom = clientFrom.getSavingsAccount();
+            boolean resFromAccount = accountFrom.withdraw(amount + taxTransfer);
 
-        if (resFromAccount == false) {
-            result = "Origin account doesn't have enough money in its balance to transfer " + amount + " + " + taxTransfer + "$";
-        } else {
-            updateClient(clientFrom);
-            clientTo.getSavingsAccount().setBalance(amount);
-            updateClient(clientTo);
+            if (resFromAccount == false) {
+                result = "Origin account doesn't have enough money in its balance to transfer " + amount + " + " + taxTransfer + "$";
+            } else {
+                updateClient(clientFrom);
+                clientTo.getSavingsAccount().setBalance(amount);
+                updateClient(clientTo);
+            }
         }
-
         return result;
     }
 
@@ -99,7 +102,7 @@ public class Bank {
         int n = 10;
 
         for (int i = 1; i <= n; i++) {
-            Client client = new Client(i, "Client" + i, "123456", i + 10, 0.0);
+            Client client = new Client(i, "Nombre" + i + " Apellido" + i, "123456", i + 10, 0.0);
             clientList.add(client);
         }
     }

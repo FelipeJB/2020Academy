@@ -16,7 +16,7 @@ public class Client {
     }
 
     public boolean addSavingsAccount(int accountNumber, double balance) {
-        if (savingsAccount != null) {
+        if (savingsAccount == null) {
             Date date = new Date();
             savingsAccount = new SavingsAccount(accountNumber, date, balance, clientID);
 
