@@ -1,15 +1,18 @@
 public class Person {
+    public String userName;
     public String name;
-    public double price;
-    public int quantity;
-    public int code;
+    public double numberAccount;
+    public int balance;
+    public String password;
+    public String openingDate;
 
     @Override
     public String toString() {
-        return "Product: \n" +
-                "Code:" + code + '\n' +
+        return "Client: \n" +
+                "Username: " + userName + '\n' +
                 "Name: " + name + '\n' +
-                "Price: " + price + '\n'+
-                "Quantity: " + quantity + '\n';
+                "Number Account: " + numberAccount + '\n'+
+                "Opening Date:: " + openingDate + '\n'+
+                "Balance: " + balance + '\n';
     }
 }

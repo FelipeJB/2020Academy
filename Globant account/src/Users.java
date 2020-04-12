@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Inventory {
+    Map <
     Map <Integer, Person> people = new HashMap();
 
 
