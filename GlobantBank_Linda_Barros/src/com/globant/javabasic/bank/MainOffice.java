@@ -44,7 +44,6 @@ public class MainOffice {
         System.exit(0);
     }
 
-    //                    System.exit(0);
     public static void ListClients(List<Client> clientList) {
         for (Client client : clientList) {
             double balance = client.getSavingsAccount().getBalance();
