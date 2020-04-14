@@ -128,4 +128,17 @@ public class User{
         return userIdData;
     }
 
+    String userName="";
+    public String getNameUser(int userIdData)
+    {
+        for (int i = 0; i < users.size(); i++){
+
+        if(userIdData==users.get(i).getSaving_Account_ID()) {
+            return userName=users.get(i).getName();
+        }
+
+        }
+        return userName;
+    }
+
 }

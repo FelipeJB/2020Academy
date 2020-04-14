@@ -124,7 +124,7 @@ public class Account {
                     accounts.get(i).setBalance(balance);
                     return balance;
                 } else {
-                    balance = (accounts.get(i).getBalance() - 200);
+                    balance = (accounts.get(i).getBalance() - valueTo - 200);
                     accounts.get(i).setBalance(balance);
                     return balance;
                 }
@@ -214,18 +214,22 @@ public class Account {
     }
 //**********************************************************************************************************************
 
-    public void getAccounts() {
+    public void getAccounts(int accountNumber) {
         for (int i = 0; i < accounts.size(); i++) {
+            if (accountNumber != accounts.get(i).getAccountNumber()) {
                 System.out.println("Account No." + accounts.get(i).getAccountNumber() + " Balance:$" + accounts.get(i).getBalance());
+            }
         }
     }
 
-    boolean accountTxFlag = false;
-    public boolean getAccountToTransfer(int accountSelected) {
 
+    public boolean getAccountToTransfer(int accountSelected) {
+        boolean accountTxFlag = false;
         for (int i = 0; i < accounts.size(); i++) {
             if (accounts.get(i).getAccountNumber() == accountSelected) {
+                System.out.println("Account:" + accounts.get(i).getAccountNumber());
                 return accountTxFlag = true;
+
             }
         }
         return accountTxFlag;

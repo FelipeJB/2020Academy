@@ -15,6 +15,7 @@ public class GlobantBank {
         int countAttempts=3;
         boolean costTx=false;
         boolean validateFunds=false;
+        int accountNumberToTx=0;
 
         System.out.println("****************************************************");
         System.out.println("  Welcome to the Globant Bank      ");
@@ -89,6 +90,12 @@ public class GlobantBank {
                         }while (!userData);
 
                         int accountNumber = account.getAccountNumber(userId);
+                        int initialBalance= account.getInitialBalance(accountNumber);
+                        user.getNameUser(userId);
+                        System.out.println("....................................................");
+                        System.out.println("Welcome " + user.getNameUser(userId));
+                        System.out.println("----------------------------------------------------");
+                        System.out.println("Your Account No." + accountNumber + " has $" + initialBalance + " in the balance");
 
                         while (menu>0) {
                             System.out.println("....................................................");
@@ -104,7 +111,7 @@ public class GlobantBank {
                             while (optionUser > 0) {
                                 switch (optionUser) {
                                     case 1://Withdraw
-                                        int initialBalance= account.getInitialBalance(accountNumber);
+                                        initialBalance= account.getInitialBalance(accountNumber);
                                         System.out.println("Account No.: " + accountNumber + " Balance $:" + initialBalance);
                                         System.out.println("Enter the value to withdraw:$");
                                         Scanner readValue = new Scanner(System.in);
@@ -193,19 +200,17 @@ public class GlobantBank {
                                     case 3://Transfer Money
                                         System.out.println("Your Account No.:" + accountNumber + " Balance:$" +account.getInitialBalance(accountNumber));
                                         System.out.println("************** AVAILABLE ACCOUNTS  ********************************");
-                                        account.getAccounts();
+                                        account.getAccounts(accountNumber);
                                         System.out.println("...................................................................");
                                         System.out.println("Please select one account of the next list:");
                                         System.out.println("...................................................................");
 
                                         Scanner accountFlag = new Scanner(System.in);
-                                        int accountNumberToTx = accountFlag.nextInt();
+                                        accountNumberToTx = accountFlag.nextInt();
 
                                         boolean accountValidation= account.getAccountToTransfer(accountNumberToTx);
-                                        System.out.println(accountValidation);
 
                                         if(accountValidation){
-                                            accountValidation=false;
                                             System.out.println("...................................................................");
                                             System.out.println("Enter the value to transfer:");
                                             Scanner valueTxFlag = new Scanner(System.in);
@@ -213,7 +218,6 @@ public class GlobantBank {
 
                                             validateFunds= account.validateFunds(valueToTransfer,accountNumber);
 
-                                            System.out.println(validateFunds);
                                             System.out.println("This transaction will have cost." + " Do you want to check? Y/N");
                                             System.out.println("................................................................");
 
@@ -271,7 +275,7 @@ public class GlobantBank {
                                                     int finalBalanceAccountFromTransfer=account.transferFromAccount(valueToTransfer, accountNumber);
                                                     System.out.println(".......................................................................");
                                                     System.out.println("The transfer for $" + valueToTransfer + " to the Account No." +accountNumberToTx + " was successfully!");
-                                                    System.out.println("Your Account No." + accountNumber + "has now $" + finalBalanceAccountFromTransfer + " in the balance");
+                                                    System.out.println("Your Account No." + accountNumber + " has now $" + finalBalanceAccountFromTransfer + " in the balance");
                                                     optionUser = 0;
                                                     menu = 1;
                                                     userData = true;
@@ -303,7 +307,7 @@ public class GlobantBank {
                     break;
 
                 case 3://Exit
-                    System.out.println("SEE YOU SOON!.." + "\n");
+                    System.out.println("SEE YOU SOON!..." + "\n");
                     option = 0;
                     break;
 
