@@ -36,10 +36,20 @@ public class Users {
         }
     }
 
-    public static boolean deletePerson(User user) {
-        User validateUser = people.get(user.getUserName());
+    public static boolean searchAccountToTransfer(String userNameDestiny) {
+        User validateUser = people.get(userNameDestiny);
         if (validateUser != null){
-            people.remove(user.getUserName());
+            if (userNameDestiny.equals(validateUser.getUserName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean deletePerson(String user) {
+        User validateUser = people.get(user);
+        if (validateUser != null){
+            people.remove(user);
             return true;
         }
         return false;

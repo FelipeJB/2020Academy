@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        User admin =new User();
+        User admin = new User();
         admin.setUserName("admin");
         admin.setPassword("1234");
         Users.addPerson(admin);
 
-        Account account1 =new Account();
-        User user1 =new User ();
+        Account account1 = new Account();
+        User user1 = new User();
         user1.setUserName("johky");
         user1.setPassword("1234");
         user1.setName("John Parra");
@@ -22,6 +22,16 @@ public class Main {
         account1.setOpeningDate("apr-15-2019");
         user1.setAccount(account1);
         Users.addPerson(user1);
+
+        Account account2 = new Account();
+        User user2 = new User();
+        user2.setUserName("jparra");
+        user2.setPassword("1234");
+        user2.setName("Juan Parra");
+        account2.setAccountNumber(456789);
+        account2.setOpeningDate("apr-14-2010");
+        user2.setAccount(account2);
+        Users.addPerson(user2);
 
 
         User user = new User();
@@ -45,9 +55,9 @@ public class Main {
                     String userName = userInformation.nextLine();
                     System.out.println("Insert Password:");
                     String userPassword = userInformation.nextLine();
-                    if (Users.validateUser(userName,userPassword)) {
-                        user=Users.getUserByUsername(userName);
-                        System.out.println("Welcome " + user.getUserName());
+                    if (Users.validateUser(userName, userPassword)) {
+                        user = Users.getUserByUsername(userName);
+                        System.out.println("Welcome " + user);
                         Scanner menuUsers = new Scanner(System.in);
                         boolean exitUsers = false;
                         int optionUsers = 0;
@@ -69,16 +79,35 @@ public class Main {
                                 case 2:
                                     System.out.println("Amount to add");
                                     double amountToAdd = Double.parseDouble(userInformation.nextLine());
-                                    transaction.addMoney(user.getAccount(),amountToAdd);
+                                    transaction.addMoney(user.getAccount(), amountToAdd);
                                     System.out.println("Your new balance is: " + user.getAccount().getBalance());
                                     break;
                                 case 3:
                                     System.out.println("Amount to withdraw");
                                     double amountToRetrieve = Double.parseDouble(userInformation.nextLine());
-                                    transaction.withdraw(user.getAccount(), amountToRetrieve);
-                                    System.out.println("Your $" + amountToRetrieve + " withdraw was succesfully" + "\nYour new balance is : " + user.getAccount().getBalance());
+                                    if(transaction.withdraw(user.getAccount(), amountToRetrieve)) {
+                                        System.out.println("Your $" + amountToRetrieve + " withdraw was succesfully" +"\nThe transaction cost: "+ "\nYour new balance is : " + user.getAccount().getBalance());
+                                    }
+                                    else {
+                                        System.out.println("your transaction was declined, please try again \n Insufficient funds");
+                                    }
                                     break;
                                 case 4:
+                                    System.out.println("Username account destiny:");
+                                    String userNameDestiny = userInformation.nextLine();
+                                    if (Users.searchAccountToTransfer(userNameDestiny)) {
+                                        user1 = Users.getUserByUsername(userNameDestiny);
+                                        System.out.println("Amount to transfer");
+                                        double amountToTransfer = Double.parseDouble(userInformation.nextLine());
+                                        if (transaction.transfer(user.getAccount(), user1.getAccount(), amountToTransfer)) {
+                                            System.out.println("Your $" + amountToTransfer + " transfer to" + user1.getUserName() + "Account number:" + user1.getAccount().getAccountNumber() + "was succesfully" + "\nYour new balance is" + user.getAccount().getBalance());
+                                        } else {
+                                            System.out.println("your transaction was declined, please try again \n Insufficient funds");
+                                        }
+
+                                    } else {
+                                        System.out.println("your transaction was declined, please try again \n user to transfer not found");
+                                    }
                                     break;
                                 case 5:
                                     exitUsers = true;
@@ -100,7 +129,7 @@ public class Main {
                     String adminUser = adminInformation.nextLine();
                     System.out.println("Insert Password:");
                     String adminPassword = adminInformation.nextLine();
-                    if (Users.validateUser(adminUser,adminPassword)){
+                    if (Users.validateUser(adminUser, adminPassword)) {
 
                         System.out.println("Welcome");
                         Scanner menuAdmin = new Scanner(System.in);
@@ -141,13 +170,11 @@ public class Main {
                                     user.setAccount(account);
                                     Users.addPerson(user);
                                     break;
-
                                 case 3:
                                     Scanner userInformationDelete = new Scanner(System.in);
                                     System.out.println("Insert user name: ");
                                     String userNameDelete = userInformationDelete.nextLine();
-                                    user.setUserName(userNameDelete);
-                                    Users.deletePerson(user);
+                                    Users.deletePerson(userNameDelete);
                                     break;
                                 case 4:
                                     exitAdmin = true;
@@ -155,13 +182,13 @@ public class Main {
                                 default:
                                     System.out.println("Just numbers between 1 and 4");
 
-                                 }
+                            }
 
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println("User name and password are incorrect");
                     }
+                    break;
                 case 3:
                     exit = true;
                     break;
