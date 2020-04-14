@@ -80,13 +80,13 @@ public class Main {
                                     System.out.println("Amount to add");
                                     double amountToAdd = Double.parseDouble(userInformation.nextLine());
                                     transaction.addMoney(user.getAccount(), amountToAdd);
-                                    System.out.println("Your new balance is: " + user.getAccount().getBalance());
+                                    System.out.println("Your new balance is: " + user.getAccount().getBalance()+"\n This Transaction doesn't have any cost.");
                                     break;
                                 case 3:
                                     System.out.println("Amount to withdraw");
                                     double amountToRetrieve = Double.parseDouble(userInformation.nextLine());
                                     if(transaction.withdraw(user.getAccount(), amountToRetrieve)) {
-                                        System.out.println("Your $" + amountToRetrieve + " withdraw was succesfully" +"\nThe transaction cost: "+ "\nYour new balance is : " + user.getAccount().getBalance());
+                                        System.out.println("Your $" + amountToRetrieve + " withdraw was successful" +"\nThe transaction cost: "+Transactions.getTaxes()+ "\nYour new balance is : " + user.getAccount().getBalance());
                                     }
                                     else {
                                         System.out.println("your transaction was declined, please try again \n Insufficient funds");
@@ -100,7 +100,7 @@ public class Main {
                                         System.out.println("Amount to transfer");
                                         double amountToTransfer = Double.parseDouble(userInformation.nextLine());
                                         if (transaction.transfer(user.getAccount(), user1.getAccount(), amountToTransfer)) {
-                                            System.out.println("Your $" + amountToTransfer + " transfer to" + user1.getUserName() + "Account number:" + user1.getAccount().getAccountNumber() + "was succesfully" + "\nYour new balance is" + user.getAccount().getBalance());
+                                            System.out.println("Your $" + amountToTransfer + " Transfer to user: \n" + user1.getName() + "\nAccount number: " + user1.getAccount().getAccountNumber() + "\nWas succesfully" + "\nThe transaction cost: $"+Transactions.getTaxes()+"\nYour new balance is: $" + user.getAccount().getBalance());
                                         } else {
                                             System.out.println("your transaction was declined, please try again \n Insufficient funds");
                                         }

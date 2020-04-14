@@ -4,7 +4,17 @@ import entities.Account;
 import entities.User;
 
 public class Transactions {
-    public double addMoney (Account account,double amountAdd){
+    private static double taxes=0;
+
+    public static double getTaxes() {
+        return taxes;
+    }
+
+    public static void setTaxes(double taxes) {
+        Transactions.taxes = taxes;
+    }
+
+    public double addMoney (Account account, double amountAdd){
         account.setBalance(account.getBalance()+amountAdd);
         return account.getBalance();
     }
@@ -15,13 +25,12 @@ public class Transactions {
         }
         else {
             if (amountToWithdraw<1000) {
-                double taxes=(amountToWithdraw+200);
-                account.setBalance(account.getBalance() - taxes);
+                taxes=200;
             }
             else {
-                double taxes=(amountToWithdraw+(((amountToWithdraw*15))/100)+200);
-                account.setBalance(account.getBalance() - taxes);
-                   }
+                taxes=(((amountToWithdraw*15)/100)+200);
+            }
+            account.setBalance(account.getBalance() - taxes);
             return true;
         }
 
@@ -32,8 +41,9 @@ public class Transactions {
             return false;
         }
         else {
-            account2.setBalance(account2.getBalance()+amountToTransfer);
-            account1.setBalance(account1.getBalance()-amountToTransfer);
+            taxes=100;
+            account2.setBalance(account2.getBalance()+(amountToTransfer+taxes));
+            account1.setBalance(account1.getBalance()-(amountToTransfer+taxes));
             return true;
         }
 
