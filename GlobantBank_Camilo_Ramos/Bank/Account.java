@@ -23,7 +23,7 @@ public class Account {
 	
 	public boolean validAcc(String acc)
 	{
-		Iterator it = Account.dAccount.keySet().iterator();
+		Iterator<String> it = Account.dAccount.keySet().iterator();
 		int a=0;
 		while(it.hasNext())
 		{

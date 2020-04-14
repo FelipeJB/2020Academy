@@ -17,7 +17,7 @@ public class Menu {
 		user.users();
 		duser=user.verUser();
 
-		while(k!="2")
+		while(k!="4")
 		{
 			user.usrData(duser);
 			System.out.println("1-Transfer Money\n"
@@ -31,7 +31,7 @@ public class Menu {
 					System.out.println("************************");
 					System.out.println("Account List");
 					orgacc=user.data.get(duser+2);
-					Iterator it = Account.dAccount.keySet().iterator();
+					Iterator<String> it = Account.dAccount.keySet().iterator();
 					while(it.hasNext())
 					{
 						String dat = (String) it.next();
@@ -65,7 +65,6 @@ public class Menu {
 					break;
 				case "4":
 				System.exit(0);
-				
 				break;
 				default:
 				System.out.println("Unexpected value: ");
