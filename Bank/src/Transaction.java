@@ -7,6 +7,7 @@ public class Transaction {
 	private double transferTax = 100;
 	private double plusPercent = 0.15;
 	
+	//Metodo agregar dinero
 	public List<Account> addMoney (List<Client> _clients, List<Account> _accounts) {
 		int clientIndex = validateIdClient(_clients);		
 		int accountIndex = validateAccountNumber(_accounts);
@@ -17,7 +18,7 @@ public class Transaction {
 				Scanner scan1 = new Scanner(System.in);
 				double balance = scan1.nextDouble();
 				_accounts.get(accountIndex).balance += balance;
-				System.out.println("Successfully added, your new balance is: "+balance);				
+				System.out.println("Successfully added, your new balance is: "+_accounts.get(accountIndex).balance);				
 			}
 		}		
 		
@@ -25,6 +26,7 @@ public class Transaction {
 		
 	}
 	
+	//Metodo retirar dinero
 	public List<Account> withdraw (List<Account> _accounts, List<Client> _clients){
 		int clientIndex = validateIdClient(_clients);		
 		int accountIndex = validateAccountNumber(_accounts);
@@ -47,22 +49,18 @@ public class Transaction {
 				
 				if (balance>=withdrawValue) {
 					_accounts.get(accountIndex).balance = balance - withdrawValue;
+					System.out.println("successful Withdraw. Your new balance is: "+_accounts.get(accountIndex).balance);
 				}
 				else {
 					System.out.println("Not enough money!");
 				}
 			
 			}		
-			else {
-				System.out.println("This account number does not exist");
-			}
-		}
-		else {
-			System.out.println("This client ID does not exist");
 		}
 		return _accounts;
 	}
 	
+	//Metodo transferir dinero
 	public List<Account> transfer (List<Account> _accounts, List<Client> _clients){
 		int clientIndex = validateIdClient(_clients);		
 		int accountIndex = validateAccountNumber(_accounts);
@@ -70,41 +68,39 @@ public class Transaction {
 		if(clientIndex >= 0) {
 			if (accountIndex >= 0) {
 				System.out.println("Enter the amount to transfer: ");
-				Scanner scan2 = new Scanner(System.in);
-				
-				
-				//aqui tengo que colocar la logica de transfer
-				
-				int withdrawValue = scan2.nextInt();
+				Scanner scan2 = new Scanner(System.in);				
+				int transferValue = scan2.nextInt();
 				double balance = _accounts.get(accountIndex).balance;
+				balance = balance-transferTax;
 				
-				if(withdrawValue>=transactionLimit) {
+				
+				if (balance>=transferValue) {
 					
-					balance = balance-(withdrawValue*plusPercent)-withdrawTax;
-				}
-				
-				else {
-					balance = balance-withdrawTax;
-				}
-				
-				if (balance>=withdrawValue) {
-					_accounts.get(accountIndex).balance = balance - withdrawValue;
+					System.out.println("Enter the destination account info");
+					int clientDestIndex = validateIdClient(_clients);		
+					int accountDestIndex = validateAccountNumber(_accounts);
+					
+					if(clientDestIndex >= 0 && clientDestIndex != clientIndex) {
+						if (accountDestIndex >= 0) {
+							_accounts.get(accountIndex).balance = balance - transferValue ;
+							_accounts.get(accountDestIndex).balance += transferValue;
+							System.out.println("Successfully transfered, your new balance is: "+_accounts.get(accountIndex).balance);
+						}
+					}
+					else {
+						System.out.println("Transaction not allowed, destination account same as origin account");
+					}
 				}
 				else {
 					System.out.println("Not enough money!");
 				}
 			
 			}		
-			else {
-				System.out.println("This account number does not exist");
-			}
-		}
-		else {
-			System.out.println("This client ID does not exist");
 		}
 		return _accounts;
 	}
 	
+	//Metodo para validar si la cuenta existe
 	private int validateAccountNumber(List<Account> _accounts) {
 		System.out.println("Enter account number: ");
 		Scanner scan = new Scanner(System.in);
@@ -115,13 +111,14 @@ public class Transaction {
 				index = i;
 			}
 		}
-		if(index >= 0) {
+		if(index < 0) {
 			System.out.println("This account number does not exist");
 		}
 		
 		return index;
 	}
 	
+	//Metodo para validar si el cliente existe
 	private int validateIdClient(List<Client> _clients) {
 		System.out.println("Enter client ID: ");
 		Scanner scan = new Scanner(System.in);
@@ -132,7 +129,7 @@ public class Transaction {
 				index = i;
 			}
 		}
-		if(index >= 0) {
+		if(index < 0) {
 			System.out.println("This client ID does not exist");
 		}
 		

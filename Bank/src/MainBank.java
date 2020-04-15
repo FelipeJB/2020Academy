@@ -13,7 +13,7 @@ public class MainBank {
 		clientList.add(client.create("Martha Serpa",1010179,"mserpa","aguila123"));
 		clientList.add(client.create("Efrain Pardo",1032153,"epardo","aguila123"));
 		clientList.add(client.create("Joana Calderon",52215,"jcalderon","aguila123"));
-		clientList.add(client.create("Roberto Gomez",72345,"rgomez","aguila123"));
+		clientList.add(client.create("Pepe Gomez",72345,"pgomez","aguila123"));
 		clientList.add(client.create("Laura Lopez",1020134,"llopez","aguila123"));
 		
 		Account account = new Account();
@@ -31,14 +31,14 @@ public class MainBank {
 		
 		while (!finish) {
 		
-			System.out.println("- If you want to see clients list type 1 \n- Withdraw type 2 \n- Add money type 3 \n- Transfer money type 4 \n-Close program type 5");
+			System.out.println("- If you want to see clients list type 1 \n- Withdraw type 2 \n- Add money type 3 \n- Transfer money type 4 \n- Close program type 5");
 			Scanner scan = new Scanner(System.in);
 			int action = scan.nextInt();
 			
 			switch (action) {
 			
 			case 1:
-				//print list
+				//print client list
 				client.showList(clientList);
 			     break;
 			     
@@ -48,14 +48,16 @@ public class MainBank {
 				break;
 				
 			case 3:
-				
-				//productList = product.delete(productList);
-				
+				//add money
+				transaction.addMoney(clientList, accountList);
 				break;
-			
 			case 4:
+				//transfer money
+				transaction.transfer(accountList, clientList);
+				break;
+			case 5:
 				finish = true;
-				System.out.println("Thank you");
+				System.out.println("Thank you, program closed");
 				break;
 			default:
 				break;

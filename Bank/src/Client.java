@@ -21,16 +21,10 @@ public class Client {
 	public void showList (List<Client> clients) {
 		
 		System.out.println("Client list: ");
-		System.out.format("%16s%16s%16s%16s%16s%n","Name", "ID", "User","Password");
-	    clients.forEach(item->System.out.format("%16s%16d%16s%16d%n",item.name,item.id,item.user,item.password));
+		System.out.format("%16s%16s%16s%16s%n","Name", "ID", "User","Password");
+	    clients.forEach(item->System.out.format("%16s%16d%16s%16s%n",item.name,item.id,item.user,item.password));
 		
 	}
 	
 
 }
-
-//withdraw();
-
-//addMoney();
-
-//transferMoney(),
