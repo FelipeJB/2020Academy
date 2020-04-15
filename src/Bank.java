@@ -12,8 +12,18 @@ public class Bank {
 		double tax;
 		int option;
 		
-		Account account = new Account(123, "01-01-2002", 2000);
-		Account account1 = new Account(1234, "01-10-2015", 200);
+		Account account = new Account(112233, "01-01-2015", 2000);
+		Account account1 = new Account(112244, "01-10-2016", 3000);
+		Account account2 = new Account(112255, "01-10-2017", 4000);
+		
+		Client client = new Client(account.accountNumber, "Martha Restrepo", 12345);
+		Client client1 = new Client(account1.accountNumber, "Andres Osorio", 12346);
+		Client client2 = new Client(account2.accountNumber, "Alejando Alzate", 12347);
+		
+		System.out.println("Clients Information: ");
+		System.out.println("- First Name & Last Name: " + client.user + ", Account Number " + client.accountNumber + ", Balance: " + account.balance);
+		System.out.println("- First Name & Last Name: " + client1.user + ", Account Number " + client1.accountNumber + ", Balance: " + account1.balance);
+		System.out.println("- First Name & Last Name: " + client2.user + ", Account Number " + client2.accountNumber + ", Balance: " + account2.balance);
 		
 		System.out.println("-----------------------------------");
 		System.out.println("Select an option:");
@@ -29,7 +39,7 @@ public class Bank {
         case 1:
         	System.out.println("-----------------------------------");
         	totalAccount = account.balance;
-    		System.out.println("The balanace in the account " + account.accountNumber +" with openning date " + account.openingDate + " is: " + totalAccount );
+    		System.out.println("The balanace in the account " + client.accountNumber +" with openning date " + account.openingDate + " is: " + totalAccount );
     		System.out.println("-----------------------------------");
             break;
         case 2:
@@ -67,10 +77,10 @@ public class Bank {
     		ammounToTransfer = scanner.nextDouble();
     		System.out.println("Transfering money to another account has a cost of 100");
 			tax = 100;
-			account1.balance = account1.balance - tax;
+			account1.balance = ((account1.balance - tax) - ammounToTransfer);
 			System.out.println("The balanace in the account " + account1.accountNumber +" with openning date " + account1.openingDate + " after making the transfer is: " + account1.balance);
     		account.balance = account.balance + ammounToTransfer;
-    		System.out.println("The balanace in the account " + account.accountNumber +" with openning date " + account.openingDate + " after making the transfer is: " + account.balance);
+    		System.out.println("The balanace in the account " + account.accountNumber + " with openning date " + account.openingDate + " after making the transfer is: " + account.balance);
     		System.out.println("-----------------------------------");
         	break;
         case 5:

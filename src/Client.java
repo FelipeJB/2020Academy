@@ -8,5 +8,6 @@ public class Client {
 		this.accountNumber = accountNumber;
 		this.user = user;
 		this.password = password;
+		
 	}
 }
