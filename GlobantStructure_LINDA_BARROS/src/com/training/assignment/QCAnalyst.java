@@ -11,13 +11,13 @@ public class QCAnalyst extends Quality implements Assignment {
     private int seniority;
     private String responsibility;
 
-    public QCAnalyst(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, String testingTypes, Glober directBoos, int seniority, String responsibility) {
-        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project, rolePurpose, roleResponsibility, roleCode, testingTypes);
-        this.directBoos = directBoos;
-        this.seniority = seniority;
-        this.responsibility = responsibility;
-    }
 
+
+    public QCAnalyst(){}
+
+    public QCAnalyst(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
+        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
+    }
 
     @Override
     public Glober getDirectBoos() {

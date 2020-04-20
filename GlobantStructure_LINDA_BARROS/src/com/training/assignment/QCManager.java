@@ -12,12 +12,11 @@ public class QCManager extends Quality implements Assignment {
     private String responsibility;
     private List<Integer> managedProjects;
 
-    public QCManager(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, String testingTypes, Glober directBoos, int seniority, String responsibility, List<Integer> managedProjects) {
-        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project, rolePurpose, roleResponsibility, roleCode, testingTypes);
-        this.directBoos = directBoos;
-        this.seniority = seniority;
-        this.responsibility = responsibility;
-        this.managedProjects = managedProjects;
+
+    public QCManager(){}
+
+    public QCManager(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
+        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
     }
 
 

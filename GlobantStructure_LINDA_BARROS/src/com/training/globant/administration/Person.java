@@ -17,6 +17,8 @@ public class Person {
         this.bloodType = bloodType;
     }
 
+    public Person(){}
+
     public int getIdNumber() {
         return idNumber;
     }

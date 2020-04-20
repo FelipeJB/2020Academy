@@ -13,6 +13,7 @@ public class Glober extends Person {
         this.salary = salary;
         this.project = project;
     }
+    public Glober(){}
 
 
     public String getDateInitialization() {

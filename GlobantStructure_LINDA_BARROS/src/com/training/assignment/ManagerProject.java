@@ -12,13 +12,11 @@ public class ManagerProject extends Manager implements Assignment {
     private int seniority;
     private String responsibility;
 
-    public ManagerProject(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, ArrayList<Integer> managedProjects, Glober directBoos, int seniority, String responsibility) {
-        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project, rolePurpose, roleResponsibility, roleCode, managedProjects);
-        this.directBoos = directBoos;
-        this.seniority = seniority;
-        this.responsibility = responsibility;
-    }
+    public ManagerProject(){}
 
+    public ManagerProject(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
+        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
+    }
 
     @Override
     public Glober getDirectBoos() {

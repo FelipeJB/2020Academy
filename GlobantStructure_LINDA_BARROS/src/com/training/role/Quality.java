@@ -13,14 +13,11 @@ public class Quality extends Glober implements Role {
     private int roleCode = 0;
     private String testingTypes;
 
-    public Quality(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, String testingTypes) {
+    public Quality(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
         super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
-        this.rolePurpose = rolePurpose;
-        this.roleResponsibility = roleResponsibility;
-        this.roleCode = roleCode;
-        this.testingTypes = testingTypes;
     }
 
+    public Quality(){}
 
     @Override
     public String getRolePurpose() {

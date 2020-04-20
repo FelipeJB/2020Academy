@@ -12,14 +12,11 @@ public class Developer extends Glober implements Role {
     private int roleCode = 0;
     private String technicalProfile;
 
-    public Developer(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, String technicalProfile) {
+    public Developer(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
         super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
-        this.rolePurpose = rolePurpose;
-        this.roleResponsibility = roleResponsibility;
-        this.roleCode = roleCode;
-        this.technicalProfile = technicalProfile;
     }
 
+    public Developer(){}
 
     @Override
     public String getRolePurpose() {

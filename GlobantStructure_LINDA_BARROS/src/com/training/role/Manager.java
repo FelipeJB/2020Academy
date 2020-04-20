@@ -12,14 +12,11 @@ public class Manager extends Glober implements Role {
     private int roleCode = 0;
     private ArrayList<Integer> managedProjects;
 
-    public Manager(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, ArrayList<Integer> managedProjects) {
+    public Manager(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
         super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
-        this.rolePurpose = rolePurpose;
-        this.roleResponsibility = roleResponsibility;
-        this.roleCode = roleCode;
-        this.managedProjects = managedProjects;
     }
 
+    public Manager(){}
 
     @Override
     public String getRolePurpose() {

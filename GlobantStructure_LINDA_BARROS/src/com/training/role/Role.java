@@ -1,7 +1,5 @@
 package com.training.role;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public interface Role {
 

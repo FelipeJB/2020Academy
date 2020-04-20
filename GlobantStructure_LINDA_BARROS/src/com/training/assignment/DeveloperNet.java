@@ -12,14 +12,13 @@ public class DeveloperNet extends Developer implements Assignment {
     private String responsibility;
     private String teamFoundationPlatforms;
 
-    public DeveloperNet(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project, String rolePurpose, String roleResponsibility, int roleCode, String technicalProfile, Glober directBoos, int seniority, String responsibility, String teamFoundationPlatforms) {
-        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project, rolePurpose, roleResponsibility, roleCode, technicalProfile);
-        this.directBoos = directBoos;
-        this.seniority = seniority;
-        this.responsibility = responsibility;
-        this.teamFoundationPlatforms = teamFoundationPlatforms;
-    }
 
+
+    public DeveloperNet(){}
+
+    public DeveloperNet(int idNumber, String name, String lastname, String homeAddress, int cellPhone, String bloodType, String dateInitialization, double salary, Project project) {
+        super(idNumber, name, lastname, homeAddress, cellPhone, bloodType, dateInitialization, salary, project);
+    }
 
     @Override
     public Glober getDirectBoos() {
