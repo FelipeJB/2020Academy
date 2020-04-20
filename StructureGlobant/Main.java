@@ -1,4 +1,4 @@
-package GlobantStructure;
+package StructureGlobant;
 
 public class Main {
 	static AdminGlober ad = new AdminGlober();

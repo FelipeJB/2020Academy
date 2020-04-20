@@ -1,4 +1,4 @@
-package GlobantStructure;
+package StructureGlobant;
 
 import java.util.ArrayList;
 import java.util.List;

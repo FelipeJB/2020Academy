@@ -1,4 +1,4 @@
-package GlobantStructure;
+package StructureGlobant;
 
 public abstract class Glober {
 	private int dni;

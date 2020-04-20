@@ -1,4 +1,4 @@
-package GlobantStructure;
+package StructureGlobant;
 
 import javax.lang.model.element.QualifiedNameable;
 
